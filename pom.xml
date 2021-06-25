@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>FinalProject</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>scala-maven-plugin</artifactId>
+                <version>3.2.2</version>
+                <executions>
+                    <execution>
+                        <goals><goal>compile</goal></goals>
+                        <configuration><args>
+                            <arg>-dependencyfile</arg>
+                            <arg>${project.build.directory}/.scala_dependencies</arg>
+                        </args></configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.12.4</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.2.1</version>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>
+                            jar-with-dependencies
+                        </descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                        <index>true</index>
+                        <manifest>
+                            <mainClass>FinalProject</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <id>make-assembly</id>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.apache.spark/spark-core -->
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-core_2.11</artifactId>
+            <version>2.2.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.spark/spark-sql -->
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-sql_2.11</artifactId>
+            <version>2.2.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.spark/spark-hive -->
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-hive_2.11</artifactId>
+            <version>2.2.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+    </dependencies>
+</project>
