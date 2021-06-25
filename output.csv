@@ -1,5 +1,5 @@
-Amount of crime over months
-Months | Count of crime
+Amount of crime over years
+year | Count of crime
 2013 | 75606
 2014 | 74766
 2003 | 73902
@@ -13,8 +13,8 @@ Months | Count of crime
 2011 | 66619
 2010 | 66542
 2015 | 27584
-Amount of crime over years
-year | Count of crime
+Amount of crime over months
+months | Count of crime
 10 | 80274
 5 | 79644
 4 | 78096
